@@ -12,13 +12,6 @@ object paquete {
 		return destino.puedePasar(empleado)
 	}
 
-	method pesoRepartidor() {
-		return repartidor.peso()
-	}
-	method repartidorPuedeLlamar() {
-		return repartidor.puedeLlamar()
-	}
-
 	method precioXDestino() {
 		return destino.precioEnvio()
 	}
