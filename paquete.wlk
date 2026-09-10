@@ -5,7 +5,7 @@ object paquete {
 	var repartidor = neo
 
 	method sePuedeEntregar(){
-
+		return destino.condicionDeEntrega()
 	}
 
 	method precioXDestino() {
@@ -26,26 +26,82 @@ object paquete {
 }
 
 object matrix {
-	const condicion = 
+
 	method precioEnvio() {return (500 )
+	}
+
+	method condicionDeEntrega() {
+		return paquete.repartidor.puedeLlamar()
 	}
 }
 
 object puenteDeBrooklyn {
+
 	method precioEnvio() {return (150 )
 	} 
-}
 
-object neo {
-	const peso = 0
-	var puedeLlamar = false
-
-	method cargarCredito(){
-		puedeLlamar = true
+	method condicionDeEntrega() {
+		return paquete.repartidor.peso() < 1000
 	}
 }
 
-object jeangray {
-	const peso = 65
-	const puedeLlamar = true
+object neo {
+	var tieneCredito = false
+
+	method puedeLlamar() {
+		return tieneCredito
+	}
+
+	method cargarCredito(){
+		tieneCredito = true
+	}
+
+	method peso() {
+		return 0
+	}
+}
+
+object jeanGray {
+	method puedeLlamar() {
+		return true
+	}
+
+	method peso() {
+		return 65
+	}
+
+}
+
+object saraConnor {
+	var vehiculo = moto
+
+	method puedeLlamar() {
+		return false
+	}
+
+	method peso(cantidad) {
+		return cantidad + vehiculo.pesoVehiculo()
+	}
+
+	method cambiarVehiculo(nuevoVehiculo) {
+		vehiculo = nuevoVehiculo
+	}
+}
+
+object moto {
+	method pesoVehiculo() {
+		return 100
+	} 
+}
+
+object camion {
+	var cantAcoplados = 0
+
+	method pesoVehiculo() {
+		return 500 + cantAcoplados * 500
+	} 
+
+	method cambiarAcoplados(cantidad) {
+		cantAcoplados = cantidad
+	}
 }
