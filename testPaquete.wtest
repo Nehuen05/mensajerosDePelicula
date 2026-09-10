@@ -22,6 +22,33 @@ describe "test envio" {
     
     test "test Neo" {
         paquete.assignarRepartidor(neo)
+        paquete.cambiarDestino("matrix")
         assert.notThat(paquete.sePuedeEntregar(neo))
+    }
+
+    test "test Jean "{
+        paquete.assignarRepartidor(jeanGray)
+        paquete.cambiarDestino("matrix")
+        paquete.pagar()
+        assert.that(paquete.sePuedeEntregar(jeanGray))
+    }
+
+    test "test Sara 1" {
+        paquete.assignarRepartidor(saraConnor)
+        saraConnor.cambiarPeso(70)
+        paquete.cambiarDestino("puenteDeBrooklyn")
+        saraConnor.cambiarVehiculo(camion)
+        camion.cambiarAcoplados(1)
+        paquete.pagar()
+        assert.notThat(paquete.sePuedeEntregar(saraConnor))
+    }
+
+    test "test Sara 2" {
+        paquete.assignarRepartidor(saraConnor)
+        saraConnor.cambiarPeso(70)
+        paquete.cambiarDestino("puenteDeBrooklyn")
+        saraConnor.cambiarVehiculo(moto)
+        paquete.pagar()
+        assert.that(paquete.sePuedeEntregar(saraConnor))
     }
 }

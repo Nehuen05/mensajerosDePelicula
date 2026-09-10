@@ -85,14 +85,19 @@ object jeanGray {
 }
 
 object saraConnor {
+	var peso = 60
 	var vehiculo = moto
 
 	method puedeLlamar() {
 		return false
 	}
 
-	method peso(cantidad) {
-		return cantidad + vehiculo.pesoVehiculo()
+	method cambiarPeso(nuevoPeso) {
+		peso = nuevoPeso
+	}
+
+	method peso() {
+		return peso + vehiculo.pesoVehiculo()
 	}
 
 	method cambiarVehiculo(nuevoVehiculo) {
