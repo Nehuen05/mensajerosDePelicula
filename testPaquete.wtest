@@ -14,7 +14,7 @@ describe "test PAQUETE" {
 
     test "test 3" {
         paquete.pagar()
-        assert.equals(true, paquete.estaPagado)
+        assert.that(paquete.estaPagado())
     }
 }
 
@@ -22,7 +22,6 @@ describe "test envio" {
     
     test "test Neo" {
         paquete.assignarRepartidor(neo)
-        assert.equals(false, paquete.sePuedeEntregar())
-        assert.that(false, paquete.sePuedeEntregar())
-}
+        assert.notThat(paquete.sePuedeEntregar(neo))
+    }
 }

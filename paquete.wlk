@@ -4,8 +4,12 @@ object paquete {
 	var estaPagado = false
 	var repartidor = neo
 
-	method sePuedeEntregar(){
-		return destino.condicionDeEntrega()
+	method estaPagado() {
+		return estaPagado
+	}
+
+	method sePuedeEntregar(empleado) {
+		return destino.puedePasar(empleado)
 	}
 
 	method pesoRepartidor() {
@@ -37,19 +41,20 @@ object matrix {
 	method precioEnvio() {return (500 )
 	}
 
-	method condicionDeEntrega() {
-		return paquete.repartidor.puedeLlamar()
+	method puedePasar(repartidor) {
+		return repartidor.puedeLlamar()
 	}
 }
 
 object puenteDeBrooklyn {
 
 	method precioEnvio() {return (150 )
-	} 
-
-	method condicionDeEntrega() {
-		return paquete.repartidor.peso() < 1000
 	}
+
+	method puedePasar(repartidor) {
+		return repartidor.peso() < 1000
+	}
+
 }
 
 object neo {
