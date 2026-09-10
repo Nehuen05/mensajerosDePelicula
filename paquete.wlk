@@ -2,15 +2,14 @@
 object paquete {
 	var destino = matrix
 	var estaPagado = false
+	var repartidor = neo
+
+	method sePuedeEntregar(){
+
+	}
 
 	method precioXDestino() {
-		if (destino == "matrix") {
-			return matrix.precioEnvio()
-		} else if (destino == "puenteDeBrooklyn") {
-			return puenteDeBrooklyn.precioEnvio()
-		} else {
-			return 0
-		}
+		return destino.precioEnvio()
 	}
 
 	method cambiarDestino(nuevoDestino) {
@@ -20,14 +19,33 @@ object paquete {
 	method pagar() {
 		estaPagado = true
 	}
+
+	method assignarRepartidos(empleado) {
+		repartidor = empleado
+	}
 }
 
 object matrix {
-	method precioEnvio() {return (500 )}
+	const condicion = 
+	method precioEnvio() {return (500 )
+	}
 }
 
 object puenteDeBrooklyn {
-	method precioEnvio() {return (150 )} 
+	method precioEnvio() {return (150 )
+	} 
+}
 
+object neo {
+	const peso = 0
+	var puedeLlamar = false
 
+	method cargarCredito(){
+		puedeLlamar = true
+	}
+}
+
+object jeangray {
+	const peso = 65
+	const puedeLlamar = true
 }
