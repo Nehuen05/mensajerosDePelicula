@@ -8,6 +8,13 @@ object paquete {
 		return destino.condicionDeEntrega()
 	}
 
+	method pesoRepartidor() {
+		return repartidor.peso()
+	}
+	method repartidorPuedeLlamar() {
+		return repartidor.puedeLlamar()
+	}
+
 	method precioXDestino() {
 		return destino.precioEnvio()
 	}
@@ -20,7 +27,7 @@ object paquete {
 		estaPagado = true
 	}
 
-	method assignarRepartidos(empleado) {
+	method assignarRepartidor(empleado) {
 		repartidor = empleado
 	}
 }

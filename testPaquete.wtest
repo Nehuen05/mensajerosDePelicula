@@ -17,3 +17,12 @@ describe "test PAQUETE" {
         assert.equals(true, paquete.estaPagado)
     }
 }
+
+describe "test envio" {
+    
+    test "test Neo" {
+        paquete.assignarRepartidor(neo)
+        assert.equals(false, paquete.sePuedeEntregar())
+        assert.that(false, paquete.sePuedeEntregar())
+}
+}
