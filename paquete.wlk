@@ -8,7 +8,7 @@ object paquete {
 		return estaPagado
 	}
 
-	method sePuedeEntregar(empleado) {
+	method puedeEntregar(empleado) {
 		return destino.puedePasar(empleado)
 	}
 
@@ -38,7 +38,7 @@ object paquete {
 
 object matrix {
 
-	method precioEnvio() {return (500 )
+	method precioEnvio() {return 500 
 	}
 
 	method puedePasar(repartidor) {
@@ -48,7 +48,7 @@ object matrix {
 
 object puenteDeBrooklyn {
 
-	method precioEnvio() {return (150 )
+	method precioEnvio() {return 150 
 	}
 
 	method puedePasar(repartidor) {
@@ -74,12 +74,13 @@ object neo {
 }
 
 object jeanGray {
+	const peso = 65
 	method puedeLlamar() {
 		return true
 	}
 
 	method peso() {
-		return 65
+		return peso
 	}
 
 }
