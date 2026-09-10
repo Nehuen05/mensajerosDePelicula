@@ -1,0 +1,19 @@
+import paquete.*
+
+describe "test PAQUETE" {
+
+    test "test 1" {
+        paquete.cambiarDestino("matrix")
+        assert.equals(500, paquete.precioXDestino())
+    }
+
+    test "test 2" {
+        paquete.cambiarDestino("puenteDeBrooklyn")
+        assert.equals(150, paquete.precioXDestino())
+    }
+
+    test "test 3" {
+        paquete.pagar()
+        assert.equals(true, paquete.estaPagado)
+    }
+}
