@@ -120,11 +120,11 @@ object camion {
 object empresaMensajeria{
 	var mensajeros = []
 
-	method contarMensajero(nombreMensajero) {
-		mensajeros.put(nombreMensajero)
+	method contratarMensajero(nombreMensajero) {
+		mensajeros.add(nombreMensajero)
 	}
 
-	method despideAMensajero(nombreMensajero) {
+	method despedirMensajero(nombreMensajero) {
 		mensajeros.remove(nombreMensajero)
 	}
 
@@ -136,5 +136,11 @@ object empresaMensajeria{
 		return mensajeros.size() >= 2
 	}
 
-	
+	method mensajerosPuedenEnviarPaqueete(paquete) {
+		return mensajeros.all({ unMensajero => unMensajero.puedeEntregar(paquete) })
+	}
+
+	method pesoUltimoMensajero() {
+		return mensajeros.last().peso()
+	}
 }
