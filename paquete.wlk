@@ -148,3 +148,55 @@ object empresaMensajeria{
 		return mensajeros.last().peso()
 	}
 }
+
+object paquetito{
+	var destino = matrix
+	var repartidor = neo
+
+	method cambiarDestino(nuevoDestino) {
+		destino = nuevoDestino
+	}
+
+	method estaPagado() {
+		return true
+	}
+
+	method assignarRepartidor(empleado) {
+		repartidor = empleado
+	}
+
+	method puedeEntregar(empleado) {
+		return destino.puedePasar(empleado)
+	}
+}
+
+object paquetonViajero {
+	var destinos = []
+	var estaPagado = false
+	var repartidor = neo
+	var precio = 50
+
+	method estaPagado() {
+		return estaPagado
+	}
+
+	method puedeEntregar(empleado) {
+		return destino.puedePasar(empleado)
+	}
+
+	method precioXDestino() {
+		return destino.precioEnvio()
+	}
+
+	method cambiarDestino(nuevoDestino) {
+		destino = nuevoDestino
+	}
+
+	method pagar() {
+		estaPagado = true
+	}
+
+	method assignarRepartidor(empleado) {
+		repartidor = empleado
+	}
+}
