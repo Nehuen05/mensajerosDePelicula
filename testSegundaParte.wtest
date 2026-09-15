@@ -4,26 +4,26 @@ describe "segunda parte" {
 
     test "test contratar mensajero" {
         empresaMensajeria.contratarMensajero(neo)
-        assert.equals(1, empresaMensajeria.mensajeros.size())
+        assert.equals(1 , empresaMensajeria.cantidadMensajeros())
     }
 
     test "test despedir mensajero" {
         empresaMensajeria.contratarMensajero(jeanGray)
         empresaMensajeria.despedirMensajero(jeanGray)
-        assert.equals(0, empresaMensajeria.mensajeros.size())
+        assert.equals(0, empresaMensajeria.cantidadMensajeros())
     }
 
-    test"tsest la mensajeria es grande" {
+    test "test la mensajeria es grande" {
         empresaMensajeria.contratarMensajero(neo)
         empresaMensajeria.contratarMensajero(jeanGray)
-        assert.equals(true, empresaMensajeria.laMensajeriaEsGrande())
+        assert.that(empresaMensajeria.laMensajeriaEsGrande())
     }
 
     test "test despedir a todos los mensajeros" {
         empresaMensajeria.contratarMensajero(neo)
         empresaMensajeria.contratarMensajero(jeanGray)
         empresaMensajeria.despedirATodosLosMensajeros()
-        assert.equals(0, empresaMensajeria.mensajeros.size())
+        assert.equals(0, empresaMensajeria.cantidadMensajeros())
     }
 
     test "test mensajero puede enviar paquete" {
@@ -31,7 +31,7 @@ describe "segunda parte" {
         empresaMensajeria.contratarMensajero(neo)
         paquete.cambiarDestino(matrix)
         paquete.pagar()
-        assert.equals(true, empresaMensajeria.primerMensajeroPuedeEnviarPaqueete(paquete))
+        assert.that(empresaMensajeria.primerMensajeroPuedeEnviarPaqueete(paquete))
     }
 
     test "test peso ultimo mensajero" {

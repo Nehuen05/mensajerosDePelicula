@@ -124,6 +124,10 @@ object empresaMensajeria{
 		mensajeros.add(nombreMensajero)
 	}
 
+	method cantidadMensajeros() {
+		return mensajeros.size()
+	}
+
 	method despedirMensajero(nombreMensajero) {
 		mensajeros.remove(nombreMensajero)
 	}
