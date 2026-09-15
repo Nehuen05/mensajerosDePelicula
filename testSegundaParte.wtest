@@ -29,7 +29,6 @@ describe "segunda parte" {
     test "test mensajero puede enviar paquete" {
         empresaMensajeria.contratarMensajero(jeanGray)
         empresaMensajeria.contratarMensajero(neo)
-        paquete.cambiarDestino(matrix)
         paquete.pagar()
         assert.that(empresaMensajeria.primerMensajeroPuedeEnviarPaqueete(paquete))
     }

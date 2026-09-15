@@ -6,8 +6,8 @@ object paquete {
 		return estaPagado
 	}
 
-	method precio() {
-		return 100()
+	method precio(destino) {
+		return destino.precioEnvio()
 	}
 
 	method pagar() {
@@ -142,35 +142,24 @@ object empresaMensajeria{
 	}
 
 	method hayAlgunMensajeroPuedenEnviarPaquete(paquete, destino) {
-		return mensajeros.any(mensajero => paquete.puedeMensajeroEntregar(mensajero, destino))
+		return mensajeros.any { mensajero => paquete.puedeMensajeroEntregar(mensajero, destino) }
 	}
 
 	method enviarTodos(paquetes){
-		paquetes.forEach(unPaquete => self.enviar(unPaquete, unPaquete.destino))
+		paquetes.forEach { unPaquete => self.enviar(unPaquete, unPaquete.destinos.anyOne()) }
 	}
 
 	method elMasCaro(paquetes){
-		return paquetes.max(unPaquete => unPaquete.precio())
+		return paquetes.max{unPaquete => unPaquete.precio()}
 	}
 }
 
 object paquetito{
-	var destino = puenteDeBrooklyn
-	var repartidor = jeanGray
-
-	method cambiarDestino(nuevoDestino) {
-		destino = nuevoDestino
-	}
-
 	method estaPagado() {
 		return true
 	}
 
-	method assignarRepartidor(empleado) {
-		repartidor = empleado
-	}
-
-	method puedeEntregar(empleado) {
+	method puedeEntregar(empleado,destino) {
 		return destino.puedePasar(empleado)
 	}
 }
@@ -178,15 +167,18 @@ object paquetito{
 object paquetonViajero {
 	const destinos = []
 	var estaPagado = false
-	var repartidor = neo
 	var precio = 50
+
+	method precio() {
+		return precio
+	}
 
 	method estaPagado() {
 		return estaPagado
 	}
 
-	method puedeEntregar(empleado) {
-		return destinos.puedePasar(empleado)
+	method puedeEntregar(empleado, destino) {
+		return destino.puedePasar(empleado)
 	}
 
 	method precioXDestino() {
@@ -210,7 +202,4 @@ object paquetonViajero {
 		estaPagado = true
 	}
 
-	method assignarRepartidor(empleado) {
-		repartidor = empleado
-	}
 }
