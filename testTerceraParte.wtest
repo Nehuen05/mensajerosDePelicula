@@ -4,5 +4,6 @@ describe "test tercera parte" {
         empresaMensajeria.contratarMensajero(jeanGray)
         empresaMensajeria.contratarMensajero(neo)
         paquetito.cambiarDestino(matrix)
+        assert.that(empresaMensajeria.hayAlgunMensajeroPuedenEnviarPaquete(paquetito, matrix))
     }
 }

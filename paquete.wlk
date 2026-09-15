@@ -1,19 +1,13 @@
 /** First Wollok example */
 object paquete {
-	var destino = matrix
 	var estaPagado = false
-	var repartidor = neo
 
 	method estaPagado() {
 		return estaPagado
 	}
 
-	method puedeEntregar(empleado) {
-		return destino.puedePasar(empleado)
-	}
-
-	method precioXDestino() {
-		return destino.precioEnvio()
+	method precio() {
+		return 100()
 	}
 
 	method cambiarDestino(nuevoDestino) {
@@ -24,8 +18,8 @@ object paquete {
 		estaPagado = true
 	}
 
-	method assignarRepartidor(empleado) {
-		repartidor = empleado
+	method puedeMensajeroEntregar(paquete, destino) {
+		return paquete.puedeEntregar(destino)
 	}
 }
 
@@ -145,6 +139,22 @@ object empresaMensajeria{
 
 	method pesoUltimoMensajero() {
 		return mensajeros.last().peso()
+	}
+
+	method enviar(paquete, undestino) {
+		self.hayAlgunMensajeroPuedenEnviarPaquete(paquete, undestino.anyOne())
+	}
+
+	method hayAlgunMensajeroPuedenEnviarPaquete(paquete, destino) {
+		return mensajeros.any(mensajero => paquete.puedeMensajeroEntregar(mensajero, destino))
+	}
+
+	method enviarTodos(paquetes){
+		paquetes.forEach(unPaquete => self.enviar(unPaquete, unPaquete.destino))
+	}
+
+	method elMasCaro(paquetes){
+		return paquetes.max(unPaquete => unPaquete.precio())
 	}
 }
 
