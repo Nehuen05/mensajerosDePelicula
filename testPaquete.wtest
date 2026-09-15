@@ -42,7 +42,7 @@ describe "test envio" {
         paquete.pagar()
         assert.notThat(paquete.puedeEntregar(saraConnor))
     }
-
+  
     test "test Sara 2" {
         paquete.assignarRepartidor(saraConnor)
         saraConnor.cambiarPeso(70)

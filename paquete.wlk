@@ -45,7 +45,7 @@ object puenteDeBrooklyn {
 	}
 
 	method puedePasar(repartidor) {
-		return repartidor.peso() < 1000
+		return repartidor.peso() <= 1000
 	}
 
 }
