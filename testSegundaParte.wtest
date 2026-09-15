@@ -20,15 +20,14 @@ describe "segunda parte" {
         assert.equals(0, empresaMensajeria.mensajeros.size())
     }
 
-    test "test mensajeros pueden enviar paquete" {
+    test "test mensajero puede enviar paquete" {
         empresaMensajeria.contratarMensajero(neo)
-        empresaMensajeria.contratarMensajero(jeanGray)
-        assert.equals(true, empresaMensajeria.mensajerosPuedenEnviarPaqueete(paquete))
+        assert.equals(true, empresaMensajeria.primerMensajeroPuedeEnviarPaqueete(paquete))
     }
 
     test "test peso ultimo mensajero" {
-        empresaMensajeria.contratarMensajero(neo)
         empresaMensajeria.contratarMensajero(jeanGray)
+        empresaMensajeria.contratarMensajero(neo)
         assert.equals(0, empresaMensajeria.pesoUltimoMensajero())
     }
 }

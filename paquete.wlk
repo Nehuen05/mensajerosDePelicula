@@ -118,7 +118,7 @@ object camion {
 }
 
 object empresaMensajeria{
-	var mensajeros = []
+	const mensajeros = []
 
 	method contratarMensajero(nombreMensajero) {
 		mensajeros.add(nombreMensajero)
@@ -129,15 +129,15 @@ object empresaMensajeria{
 	}
 
 	method despedirATodosLosMensajeros() {
-		mensajeros = []
+		mensajeros.clear()
 	}
 
 	method laMensajeriaEsGrande() {
 		return mensajeros.size() >= 2
 	}
 
-	method mensajerosPuedenEnviarPaqueete(paquete) {
-		return mensajeros.all({ unMensajero => unMensajero.puedeEntregar(paquete) })
+	method primerMensajeroPuedeEnviarPaqueete(paquete) {
+		return mensajeros.first().puedeEntregar(paquete)
 	}
 
 	method pesoUltimoMensajero() {
