@@ -67,13 +67,12 @@ object neo {
 }
 
 object jeanGray {
-	const peso = 65
 	method puedeLlamar() {
 		return true
 	}
 
 	method peso() {
-		return peso
+		return 65
 	}
 
 }
@@ -150,8 +149,8 @@ object empresaMensajeria{
 }
 
 object paquetito{
-	var destino = matrix
-	var repartidor = neo
+	var destino = puenteDeBrooklyn
+	var repartidor = jeanGray
 
 	method cambiarDestino(nuevoDestino) {
 		destino = nuevoDestino
@@ -171,7 +170,7 @@ object paquetito{
 }
 
 object paquetonViajero {
-	var destinos = []
+	const destinos = []
 	var estaPagado = false
 	var repartidor = neo
 	var precio = 50
@@ -181,15 +180,24 @@ object paquetonViajero {
 	}
 
 	method puedeEntregar(empleado) {
-		return destino.puedePasar(empleado)
+		return destinos.puedePasar(empleado)
 	}
 
 	method precioXDestino() {
-		return destino.precioEnvio()
+		precio = destinos.size() * 100 + 50
+		return precio
 	}
 
-	method cambiarDestino(nuevoDestino) {
-		destino = nuevoDestino
+	method agregarDestino(nuevoDestino) {
+		destinos.add(nuevoDestino)
+	}
+
+	method cancelarEnvio() {
+		destinos.clear()
+	}
+
+	method eliminarDestino(nuevoDestino) {
+		destinos.remove(nuevoDestino)
 	}
 
 	method pagar() {
