@@ -13,6 +13,12 @@ describe "segunda parte" {
         assert.equals(0, empresaMensajeria.mensajeros.size())
     }
 
+    test"tsest la mensajeria es grande" {
+        empresaMensajeria.contratarMensajero(neo)
+        empresaMensajeria.contratarMensajero(jeanGray)
+        assert.equals(true, empresaMensajeria.laMensajeriaEsGrande())
+    }
+
     test "test despedir a todos los mensajeros" {
         empresaMensajeria.contratarMensajero(neo)
         empresaMensajeria.contratarMensajero(jeanGray)
@@ -21,7 +27,10 @@ describe "segunda parte" {
     }
 
     test "test mensajero puede enviar paquete" {
+        empresaMensajeria.contratarMensajero(jeanGray)
         empresaMensajeria.contratarMensajero(neo)
+        paquete.cambiarDestino(matrix)
+        paquete.pagar()
         assert.equals(true, empresaMensajeria.primerMensajeroPuedeEnviarPaqueete(paquete))
     }
 

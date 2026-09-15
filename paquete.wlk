@@ -137,7 +137,7 @@ object empresaMensajeria{
 	}
 
 	method primerMensajeroPuedeEnviarPaqueete(paquete) {
-		return mensajeros.first().puedeEntregar(paquete)
+		return paquete.puedeEntregar(mensajeros.first())
 	}
 
 	method pesoUltimoMensajero() {
