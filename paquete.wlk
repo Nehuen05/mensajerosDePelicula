@@ -10,10 +10,6 @@ object paquete {
 		return 100()
 	}
 
-	method cambiarDestino(nuevoDestino) {
-		destino = nuevoDestino
-	}
-
 	method pagar() {
 		estaPagado = true
 	}
