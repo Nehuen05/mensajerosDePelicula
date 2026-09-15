@@ -116,3 +116,25 @@ object camion {
 		cantAcoplados = cantidad
 	}
 }
+
+object empresaMensajeria{
+	var mensajeros = []
+
+	method contarMensajero(nombreMensajero) {
+		mensajeros.put(nombreMensajero)
+	}
+
+	method despideAMensajero(nombreMensajero) {
+		mensajeros.remove(nombreMensajero)
+	}
+
+	method despedirATodosLosMensajeros() {
+		mensajeros = []
+	}
+
+	method laMensajeriaEsGrande() {
+		return mensajeros.size() >= 2
+	}
+
+	
+}
