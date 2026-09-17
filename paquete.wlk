@@ -120,7 +120,7 @@ object camion {
 
 object empresaMensajeria{
 	const mensajeros = []
-	const listaDePaquetes = [paquete]
+	const listaDePaquetes = []
 
 	method contratarMensajero(nombreMensajero) {
 		mensajeros.add(nombreMensajero)
@@ -154,12 +154,12 @@ object empresaMensajeria{
 		return mensajeros.last().peso()
 	}
 
-	method enviar(paquete, undestino) {
-		self.hayAlgunMensajeroQuePuedenEnviarUnPaquete(paquete, undestino.anyOne())
+	method enviar(unPaquete, unDestino) {
+		self.hayAlgunMensajeroQuePuedenEnviarUnPaquete(unPaquete, unDestino.anyOne())
 	}
 
-	method hayAlgunMensajeroQuePuedenEnviarUnPaquete(paquete, destino) {
-		return mensajeros.any { mensajero => paquete.puedeMensajeroEntregar(mensajero, destino) }
+	method hayAlgunMensajeroQuePuedenEnviarUnPaquete(unPaquete, destino) {
+		return mensajeros.any { mensajero => unPaquete.puedeEntregar(mensajero, destino) }
 	}
 
 	method enviarTodos(paquetes){
@@ -174,6 +174,10 @@ object empresaMensajeria{
 object paquetito{
 	method estaPagado() {
 		return true
+	}
+
+	method precio() {
+		return 0
 	}
 
 	method puedeEntregar(empleado,destino) {
