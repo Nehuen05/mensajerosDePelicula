@@ -47,6 +47,10 @@ object neo {
 		return tieneCredito
 	}
 
+	method puedeEntregar( destino) {
+		return destino.puedePasar(self)
+	}
+
 	method cargarCredito(){
 		tieneCredito = true
 	}
@@ -65,6 +69,10 @@ object jeanGray {
 		return 65
 	}
 
+	method puedeEntregar( destino) {
+		return destino.puedePasar(self)
+	}
+
 }
 
 object saraConnor {
@@ -73,6 +81,10 @@ object saraConnor {
 
 	method puedeLlamar() {
 		return false
+	}
+
+	method puedeEntregar( destino) {
+		return destino.puedePasar(self)
 	}
 
 	method cambiarPeso(nuevoPeso) {
@@ -108,6 +120,7 @@ object camion {
 
 object empresaMensajeria{
 	const mensajeros = []
+	const paquetes = []
 
 	method contratarMensajero(nombreMensajero) {
 		mensajeros.add(nombreMensajero)
