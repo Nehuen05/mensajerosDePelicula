@@ -30,7 +30,7 @@ describe "segunda parte" {
         empresaMensajeria.contratarMensajero(jeanGray)
         empresaMensajeria.contratarMensajero(neo)
         paquete.pagar()
-        assert.that(empresaMensajeria.primerMensajeroPuedeEnviarPaqueete(paquete))
+        assert.that(empresaMensajeria.primerMensajeroPuedeEnviarPaqueete(paquete,matrix))
     }
 
     test "test peso ultimo mensajero" {

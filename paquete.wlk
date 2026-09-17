@@ -14,8 +14,8 @@ object paquete {
 		estaPagado = true
 	}
 
-	method puedeMensajeroEntregar(paquete, destino) {
-		return paquete.puedeEntregar(destino)
+	method puedeEntregar(empleado, destino) {
+		return destino.puedePasar(empleado)
 	}
 }
 
@@ -120,10 +120,14 @@ object camion {
 
 object empresaMensajeria{
 	const mensajeros = []
-	const paquetes = []
+	const listaDePaquetes = [paquete]
 
 	method contratarMensajero(nombreMensajero) {
 		mensajeros.add(nombreMensajero)
+	}
+
+	method agregarPaquete(paquete) {
+		listaDePaquetes.add(paquete)
 	}
 
 	method cantidadMensajeros() {
@@ -142,8 +146,8 @@ object empresaMensajeria{
 		return mensajeros.size() >= 2
 	}
 
-	method primerMensajeroPuedeEnviarPaqueete(paquete) {
-		return paquete.puedeEntregar(mensajeros.first())
+	method primerMensajeroPuedeEnviarPaqueete(paquete, destino) {
+		return paquete.puedeEntregar(mensajeros.first(), destino)
 	}
 
 	method pesoUltimoMensajero() {
@@ -151,15 +155,15 @@ object empresaMensajeria{
 	}
 
 	method enviar(paquete, undestino) {
-		self.hayAlgunMensajeroPuedenEnviarPaquete(paquete, undestino.anyOne())
+		self.hayAlgunMensajeroQuePuedenEnviarUnPaquete(paquete, undestino.anyOne())
 	}
 
-	method hayAlgunMensajeroPuedenEnviarPaquete(paquete, destino) {
+	method hayAlgunMensajeroQuePuedenEnviarUnPaquete(paquete, destino) {
 		return mensajeros.any { mensajero => paquete.puedeMensajeroEntregar(mensajero, destino) }
 	}
 
 	method enviarTodos(paquetes){
-		paquetes.forEach { unPaquete => self.enviar(unPaquete, unPaquete.destinos.anyOne()) }
+		paquetes.forEach { unPaquete => self.enviar(unPaquete, unPaquete.destino) }
 	}
 
 	method elMasCaro(paquetes){
