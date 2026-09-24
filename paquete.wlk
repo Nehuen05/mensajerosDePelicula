@@ -14,8 +14,8 @@ object paquete {
 		estaPagado = true
 	}
 
-	method puedeEntregar(empleado, destino) {
-		return destino.puedePasar(empleado)
+	method puedeSerEntregadoAlDestinoPor(empleado, destino) {
+		return destino.puedePasar(empleado) && estaPagado
 	}
 }
 
@@ -162,26 +162,20 @@ object empresaMensajeria{
 		return mensajeros.any { mensajero => unPaquete.puedeEntregar(mensajero, destino) }
 	}
 
-	method enviarTodos(paquetes){
-		paquetes.forEach { unPaquete => self.enviar(unPaquete, unPaquete.destino) }
-	}
-
 	method elMasCaro(paquetes){
 		return paquetes.max{unPaquete => unPaquete.precio()}
 	}
 }
 
 object paquetito{
-	method estaPagado() {
-		return true
-	}
+	const property estaPagado =  true
 
 	method precio() {
 		return 0
 	}
 
-	method puedeEntregar(empleado,destino) {
-		return destino.puedePasar(empleado)
+	method puedeSerEntregadoAlDestinoPor(empleado,destino) {
+		return destino.puedePasar(empleado) && estaPagado
 	}
 }
 
@@ -198,8 +192,9 @@ object paquetonViajero {
 		return estaPagado
 	}
 
-	method puedeEntregar(empleado, destino) {
-		return destino.puedePasar(empleado)
+	method puedeSerEntregadoAlDestinoPor(empleado,destinoEsperado) {
+		return if (destinos.find({destino => destino == destinoEsperado}))
+		 destinoEsperado.puedePasar(empleado) && estaPagado
 	}
 
 	method precioXDestino() {
