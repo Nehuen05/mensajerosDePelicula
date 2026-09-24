@@ -3,7 +3,6 @@ describe "test tercera parte" {
     test "alguien puede entregar paquete" {
         empresaMensajeria.contratarMensajero(jeanGray)
         empresaMensajeria.contratarMensajero(neo)
-        paquetito.cambiarDestino(matrix)
-        assert.that(empresaMensajeria.hayAlgunMensajeroPuedenEnviarPaquete(paquetito, matrix))
+        assert.that(empresaMensajeria.enviar(paquetito, matrix))
     }
 }

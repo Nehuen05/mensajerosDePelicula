@@ -15,12 +15,12 @@ describe "test PAQUETE" {
 describe "test envio" {
     
     test "test Neo" {
-        assert.notThat(paquete.puedeMensajeroEntregar(neo,matrix))
+        assert.notThat(paquete.puedeEntregar(neo,matrix))
     }
 
     test "test Jean "{
         paquete.pagar()
-        assert.that(paquete.puedeMensajeroEntregar(jeanGray, matrix))
+        assert.that(paquete.puedeEntregar(jeanGray, matrix))
     }
 
     test "test Sara 1" {
@@ -28,13 +28,13 @@ describe "test envio" {
         saraConnor.cambiarVehiculo(camion)
         camion.cambiarAcoplados(1)
         paquete.pagar()
-        assert.notThat(paquete.puedeMensajeroEntregar(saraConnor, puenteDeBrooklyn))
+        assert.notThat(paquete.puedeEntregar(saraConnor, puenteDeBrooklyn))
     }
   
     test "test Sara 2" {
         saraConnor.cambiarPeso(70)
         saraConnor.cambiarVehiculo(moto)
         paquete.pagar()
-        assert.that(paquete.puedeMensajeroEntregar(saraConnor, puenteDeBrooklyn))
+        assert.that(paquete.puedeEntregar(saraConnor, puenteDeBrooklyn))
     }
 }
